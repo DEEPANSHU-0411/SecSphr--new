@@ -82,6 +82,7 @@
                                                            data-question-idx="{{ loop.parent.loop.index0 }}"
                                                            data-section-idx="{{ section_idx }}"
                                                            data-product-id="{{ product.id }}"
+                                                           {% if existing_answers and loop.parent.loop.index0 in existing_answers and existing_answers[loop.parent.loop.index0].answer == option %}checked{% endif %}
                                                            required>
                                                     <label class="form-check-label" for="answer_{{ loop.parent.loop.index0 }}_{{ loop.index0 }}">
                                                         {{ option }}
@@ -100,7 +101,7 @@
                                                       rows="3" placeholder="Any additional information..."
                                                       data-question-idx="{{ loop.index0 }}"
                                                       data-section-idx="{{ section_idx }}"
-                                                      data-product-id="{{ product.id }}"></textarea>
+                                                      data-product-id="{{ product.id }}">{% if existing_answers and loop.index0 in existing_answers %}{{ existing_answers[loop.index0].comment }}{% endif %}</textarea>
                                         </div>
                                         
                                         <div class="mb-3">
